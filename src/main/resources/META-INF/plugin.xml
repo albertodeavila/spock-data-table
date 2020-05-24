@@ -1,0 +1,85 @@
+<!--
+  ~ Copyright (c) 2020. Alberto De Ávila Hernández <alberto.deavila.hernandez@gmail.com>
+  ~
+  ~  Licensed under the Apache License, Version 2.0 (the "License");
+  ~  you may not use this file except in compliance with the License.
+  ~  You may obtain a copy of the License at
+  ~
+  ~  http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing, software
+  ~  distributed under the License is distributed on an "AS IS" BASIS,
+  ~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~  See the License for the specific language governing permissions and
+  ~  limitations under the License.
+  -->
+
+<idea-plugin>
+  <id>es.spockdatatable.idea</id>
+  <name>Spock data table improvements</name>
+
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.modules.java</depends>
+
+  <description>
+    <![CDATA[
+      This plugin allow you to manage beeter your Spock data tables.<br/>
+      <ul>
+        <li>Add new column with single case or multiple case.</li>
+        <li>Remove one column.</li>
+        <li>Generate a Spock data table.</li>
+        <li>Replace a column value for a new one.</li>
+        <li>Show all case numbers.</li>
+        <li>Hide all case numbers.</li>
+      </ul>
+
+      <br/>For more info, visit <a href="https://github.com/albertodeavila/spock-data-table" target="_blank">plugin documentation available on Github<a/>
+    ]]>
+  </description>
+
+  <vendor url="https://github.com/albertodeavila">Alberto De Ávila</vendor>
+
+  <actions>
+    <group id="org.intellij.sdk.action.GroupedActions" text="Spock data table" popup="true" icon="SdkIcons.Sdk_default_icon">
+      <add-to-group group-id="ToolsMenu"/>
+
+      <action id="es.spockdatatable.idea.action.GenerateDataTableAction" class="es.spockdatatable.idea.action.GenerateDataTableAction"
+              text="Generate data table" description="SDK action example" icon="SdkIcons.Sdk_default_icon">
+        <keyboard-shortcut first-keystroke="control shift G" second-keystroke="C" keymap="$default"/>
+        <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
+      </action>
+
+      <action class="es.spockdatatable.idea.action.AddSpockCaseColumnAction" id="es.spockdatatable.idea.action.AddSpockCaseColumnAction"
+              text="Add selected column" description="SDK static grouped action example" icon="SdkIcons.Sdk_default_icon">
+        <keyboard-shortcut first-keystroke="control alt C" second-keystroke="C" keymap="$default"/>
+        <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
+      </action>
+
+      <action id="es.spockdatatable.idea.action.RemoveSpockCaseColumnAction" class="es.spockdatatable.idea.action.RemoveSpockCaseColumnAction"
+              text="Remove selected column" description="SDK action example" icon="SdkIcons.Sdk_default_icon">
+        <keyboard-shortcut first-keystroke="control alt R" second-keystroke="C" keymap="$default"/>
+        <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
+      </action>
+
+      <action id="es.spockdatatable.idea.action.ReplaceColumnValueAction" class="es.spockdatatable.idea.action.ReplaceColumnValueAction"
+              text="Replace column value" description="SDK action example" icon="SdkIcons.Sdk_default_icon">
+        <keyboard-shortcut first-keystroke="control alt J" second-keystroke="C" keymap="$default"/>
+        <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
+      </action>
+
+
+      <action id="es.spockdatatable.idea.action.CommentSpockCasesAction" class="es.spockdatatable.idea.action.CommentSpockCasesAction"
+              text="Write # cases" description="SDK action example" icon="SdkIcons.Sdk_default_icon">
+        <keyboard-shortcut first-keystroke="control alt N" second-keystroke="C" keymap="$default"/>
+        <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
+      </action>
+
+      <action id="es.spockdatatable.idea.action.UncommentSpockCasesAction" class="es.spockdatatable.idea.action.UncommentSpockCasesAction"
+              text="Undo write # cases" description="SDK action example" icon="SdkIcons.Sdk_default_icon">
+        <keyboard-shortcut first-keystroke="control alt U" second-keystroke="C" keymap="$default"/>
+        <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
+      </action>
+    </group>
+  </actions>
+
+</idea-plugin>
