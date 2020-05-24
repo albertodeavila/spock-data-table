@@ -29,13 +29,13 @@ You can find this plugin available on [Jetbrains plugins page](https://plugins.j
 What can you do with this plugin? 
 * [Add a new column with multiple values, creating more lines if needed](#add-a-new-column)
 * [Remove an existing column](#remove-an-existing-column)
-* [Create an entire data table, generating all existing cases](#create-an-entire-data-table)
+* [Generate an entire data table, with all possible cases](#generate-data-table)
 * [Edit an specific value in a column](#edit-an-specific-value-in-a-column)
 * [Show the case number in all data tables](#show-the-case-number)
 * [Hide case number in all data tables](#hide-case-number-in-all-data-tables)
 
 ***
-###Add a new column
+### Add a new column
 
 If you have a test such as: 
 ``` 
@@ -96,7 +96,7 @@ def "maximum of two numbers"(int a, int b, int c) {
 }
 ```
 
-###Remove an existing column
+### Remove an existing column
 You can remove a selected column, for example, if we want to remove `b` column from the following example: 
 ``` 
 def "maximum of two numbers"(int a, int b, int c) {
@@ -124,7 +124,7 @@ def "maximum of two numbers"(int a, int b, int c) {
 }
 ```
 
-###Create an entire data table 
+### Generate data table 
 Following the *add new column* sintax, if we want to create a entire table, we just need to write:
 
 `fruits => [Fruit.BANANA, Fruit.APPLE] | prices [2.34#4.45] | currency ['€', '$']` 
@@ -145,9 +145,35 @@ FRUIT.APPLE     | 4.45   | '$'
 ```
 
 
-###Edit an specific value in a column
+### Edit an specific value in a column
+When you want to edit a value from a specific column, you just need to add to your column name something like: `[previousValue=>futureValue]`. 
+For example, if you have the next data table: 
 
-###Show the case number
+```
+a  | b | c
+0  | 0 | 0
+1  | 1 | 2
+0  | 1 | 1
+1  | 0 | 1
+2  | 2 | 4
+4  | 5 | 9
+```
+and you want to replace `1` value from the `b` column, you just need to write:
+
+```
+a  | b[1=>7] | c
+0  | 0 | 0
+1  | 1 | 2
+0  | 1 | 1
+1  | 0 | 1
+2  | 2 | 4
+4  | 5 | 9
+```
+
+then, select `b[1=>7]` and press on **Tools** > **Spock data table** > **Replace column value**
+
+
+### Show the case number
 When you have tables with a bunch of options and, sometimes, some cases fail, you will have that failing cases are, for example, 13 and 17. 
 With this feature you can see at a quick glance what's the case number.
 Suppose that we have the following test: 
@@ -214,5 +240,5 @@ void "My sum"() {
 ```
 
 
-###Hide case number in all data tables 
+### Hide case number in all data tables 
 This action just hides the [show case number](#show-the-case-number)
