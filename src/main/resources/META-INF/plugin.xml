@@ -46,38 +46,32 @@
       <action id="es.spockdatatable.idea.action.GenerateDataTableAction" class="es.spockdatatable.idea.action.GenerateDataTableAction"
               text="Generate data table" description="SDK action example" icon="SdkIcons.Sdk_default_icon">
         <keyboard-shortcut first-keystroke="control shift G" second-keystroke="C" keymap="$default"/>
-        <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
       </action>
 
       <action class="es.spockdatatable.idea.action.AddSpockCaseColumnAction" id="es.spockdatatable.idea.action.AddSpockCaseColumnAction"
               text="Add selected column" description="SDK static grouped action example" icon="SdkIcons.Sdk_default_icon">
         <keyboard-shortcut first-keystroke="control alt C" second-keystroke="C" keymap="$default"/>
-        <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
       </action>
 
       <action id="es.spockdatatable.idea.action.RemoveSpockCaseColumnAction" class="es.spockdatatable.idea.action.RemoveSpockCaseColumnAction"
               text="Remove selected column" description="SDK action example" icon="SdkIcons.Sdk_default_icon">
         <keyboard-shortcut first-keystroke="control alt R" second-keystroke="C" keymap="$default"/>
-        <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
       </action>
 
       <action id="es.spockdatatable.idea.action.ReplaceColumnValueAction" class="es.spockdatatable.idea.action.ReplaceColumnValueAction"
               text="Replace column value" description="SDK action example" icon="SdkIcons.Sdk_default_icon">
         <keyboard-shortcut first-keystroke="control alt J" second-keystroke="C" keymap="$default"/>
-        <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
       </action>
 
 
       <action id="es.spockdatatable.idea.action.CommentSpockCasesAction" class="es.spockdatatable.idea.action.CommentSpockCasesAction"
               text="Write # cases" description="SDK action example" icon="SdkIcons.Sdk_default_icon">
         <keyboard-shortcut first-keystroke="control alt N" second-keystroke="C" keymap="$default"/>
-        <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
       </action>
 
       <action id="es.spockdatatable.idea.action.UncommentSpockCasesAction" class="es.spockdatatable.idea.action.UncommentSpockCasesAction"
               text="Undo write # cases" description="SDK action example" icon="SdkIcons.Sdk_default_icon">
         <keyboard-shortcut first-keystroke="control alt U" second-keystroke="C" keymap="$default"/>
-        <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
       </action>
     </group>
   </actions>

@@ -57,7 +57,7 @@ class ReplaceColumnValueAction extends AnAction {
         String currentLine = ContentUtils.getCurrentLine(caretModel, document)
 
         List<String> charsMustContains = ['=>', '[', ']']
-        if(selectedText && selectedText.every{ currentLine.contains(it) } && currentLine.contains('|')) {
+        if(selectedText && charsMustContains.every{ currentLine.contains(it) } && currentLine.contains('|')) {
             int totalColumns = currentLine.count( '|' ) + 1
             int column = ContentUtils.getColumn(currentLine, selectedText)
 
@@ -157,7 +157,6 @@ class ReplaceColumnValueAction extends AnAction {
             String[] splittedLineValues = line.split('\\|')
             columnValue = splittedLineValues[column -1].trim()
             if(columnValue == oldValue) {
-
                 String leftValues = splittedLineValues[0..(column - 2)].join('|')
                 String rightValues = splittedLineValues[column..-1].join('|')
                 newLine = (leftValues ? "$leftValues| " : '') + newValue + (rightValues ? " |$rightValues" : '')

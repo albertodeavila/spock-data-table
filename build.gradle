@@ -19,8 +19,8 @@ plugins {
   id 'org.jetbrains.intellij' version '0.4.21'
 }
 
-group 'org.intellij.sdk'
-version '1.0.2'
+group 'es.spockdatatable.idea'
+version '1.0.3'
 
 apply plugin: 'groovy'
 
@@ -50,4 +50,7 @@ patchPluginXml {
   version = project.version
   sinceBuild = '201'
   untilBuild = '201.*'
+  changeNotes """
+      Fix logo and other minor improvements
+      """
 }
