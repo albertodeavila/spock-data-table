@@ -190,7 +190,7 @@ class UncommentSpockCasesActionTest extends BasePlatformTestCase {
     }
 
     @Override
-    protected String getTestDataPath() {
+    String getTestDataPath() {
         "testdata/commentCases"
     }
 }

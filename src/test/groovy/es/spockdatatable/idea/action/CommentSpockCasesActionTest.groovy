@@ -178,6 +178,106 @@ class CommentSpockCasesActionTest extends BasePlatformTestCase {
         """)
     }
 
+    void testShowNumberCasesWithLineBreak() {
+        given: 'a test with data table and line break'
+        myFixture.configureByText('myTest.groovy', """ 
+            void "Sample test"() {
+                expect:
+                a + b == c
+        
+                where:
+                
+                
+                a | b | c
+                0 | 0 | 0
+                1 | 1 | 2
+                0 | 1 | 1
+                1 | 0 | 1
+                2 | 2 | 4
+                4 | 5 | 9
+            }
+        """)
+
+        when: 'comment number cases'
+        myFixture.testAction(new CommentSpockCasesAction())
+
+        then:
+        myFixture.checkResult(""" 
+            void "Sample test"() {
+                expect:
+                a + b == c
+        
+                where:
+                
+                
+                /*___#___*/a | b | c
+                /*___0___*/0 | 0 | 0
+                /*___1___*/1 | 1 | 2
+                /*___2___*/0 | 1 | 1
+                /*___3___*/1 | 0 | 1
+                /*___4___*/2 | 2 | 4
+                /*___5___*/4 | 5 | 9
+            }
+        """)
+    }
+
+    void testShowNumberCasesWithoutCases() {
+        given: 'a test with data table and line break'
+        myFixture.configureByText('myTest.groovy', """ 
+            void "Sample test without cases"() {
+                expect:
+                a + b == c
+        
+                where:
+                
+            }
+            
+            void "Sample test"() {
+                expect:
+                a + b == c
+        
+                where:
+                
+                a | b | c
+                0 | 0 | 0
+                1 | 1 | 2
+                0 | 1 | 1
+                1 | 0 | 1
+                2 | 2 | 4
+                4 | 5 | 9
+            }
+        """)
+
+        when: 'comment number cases'
+        myFixture.testAction(new CommentSpockCasesAction())
+
+        then:
+        myFixture.checkResult(""" 
+            void "Sample test without cases"() {
+                expect:
+                a + b == c
+        
+                where:
+                
+            }
+            
+            void "Sample test"() {
+                expect:
+                a + b == c
+        
+                where:
+                
+                /*___#___*/a | b | c
+                /*___0___*/0 | 0 | 0
+                /*___1___*/1 | 1 | 2
+                /*___2___*/0 | 1 | 1
+                /*___3___*/1 | 0 | 1
+                /*___4___*/2 | 2 | 4
+                /*___5___*/4 | 5 | 9
+            }
+        """)
+    }
+
     void testShowNumberCasesWithLotOfCases() {
         given: 'a test with data table '
         myFixture.configureByFile('SampleSpockTestWithLotOfCases.groovy')
@@ -190,7 +290,7 @@ class CommentSpockCasesActionTest extends BasePlatformTestCase {
     }
 
     @Override
-    protected String getTestDataPath() {
+    String getTestDataPath() {
         "testdata/commentCases"
     }
 }

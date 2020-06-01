@@ -65,9 +65,14 @@ class CommentSpockCasesAction extends AnAction {
 
             Integer closeMethodOffset = endTestPosition
             caretModel.moveToOffset(wherePos)
-            caretModel.moveCaretRelatively(0, 1, false, false, false)
 
+            caretModel.moveCaretRelatively(0, 1, false, false, false)
             String line = ContentUtils.getCurrentLine(caretModel, document)
+            while(!line.contains('|') && caretModel.offset < endTestPosition) {
+                caretModel.moveCaretRelatively(0, 1, false, false, false)
+                line = ContentUtils.getCurrentLine(caretModel, document)
+            }
+
             if (line.contains('|')) {
                 WriteCommandAction.runWriteCommandAction(project, { ->
                     addVarNamesComment(document, caretModel)
