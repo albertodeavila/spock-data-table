@@ -376,4 +376,57 @@ class AddSpockCaseColumnActionTest extends BasePlatformTestCase{
             }
         """)
     }
+
+    void testAddColumnWithThreeValues() {
+        given: 'a test to generate a new column wit 2 values'
+        myFixture.configureByText('myTest.groovy', """
+            void "Sample test"() {
+                expect:
+                a + b == c
+        
+                where:
+                a | b | c | <selection><caret>d=>[1#2#3]</selection>
+                0 | 0 | 0
+                1 | 1 | 2
+                0 | 1 | 1
+                1 | 0 | 1
+                2 | 2 | 4
+                4 | 5 | 9
+            }
+        """)
+
+        when: 'generate the table'
+        myFixture.testAction(new AddSpockCaseColumnAction())
+
+        then: 'check the data table generated'
+        myFixture.checkResult("""
+            void "Sample test"() {
+                expect:
+                a + b == c
+        
+                where:
+                a | b | c | d
+                0 | 0 | 0 | 1
+                1 | 1 | 2 | 1
+                0 | 1 | 1 | 1
+                1 | 0 | 1 | 1
+                2 | 2 | 4 | 1
+                4 | 5 | 9 | 1
+
+                0 | 0 | 0 | 2
+                1 | 1 | 2 | 2
+                0 | 1 | 1 | 2
+                1 | 0 | 1 | 2
+                2 | 2 | 4 | 2
+                4 | 5 | 9 | 2
+
+                0 | 0 | 0 | 3
+                1 | 1 | 2 | 3
+                0 | 1 | 1 | 3
+                1 | 0 | 1 | 3
+                2 | 2 | 4 | 3
+                4 | 5 | 9 | 3
+            }
+        """)
+    }
 }

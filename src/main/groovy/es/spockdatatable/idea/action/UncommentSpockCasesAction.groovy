@@ -53,6 +53,7 @@ class UncommentSpockCasesAction extends AnAction {
 
         Integer lineNumber = document.getLineNumber(0)
 
+        caretModel.moveToOffset(0)
         while (lineNumber < document.lineCount) {
             String line = ContentUtils.getCurrentLine(caretModel, document)
             if (lineContainsNumberCase(line)) {

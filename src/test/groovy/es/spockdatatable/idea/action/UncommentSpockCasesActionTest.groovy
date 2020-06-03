@@ -178,6 +178,45 @@ class UncommentSpockCasesActionTest extends BasePlatformTestCase {
         """)
     }
 
+    void testRemoveNumberCasesWithSelectedText() {
+        given: 'a test with data table with some lines selected'
+        myFixture.configureByText('myTest.groovy', """ 
+            void "Sample test"() {
+                expect:
+                a + b == c
+        
+                where:
+                /*___#___*/a | b | c
+                /*___0___*/0 | 0 | 0
+                <selection>/*___1___*/1 | 1 | 2
+                /*___2___*/0 | 1 | 1
+                /*___3___*/1 | 0 | 1
+                /*___4___*/2 | 2 | 4<caret></selection>
+                /*___5___*/4 | 5 | 9
+            }
+        """)
+
+        when: 'comment number cases'
+        myFixture.testAction(new UncommentSpockCasesAction())
+
+        then:
+        myFixture.checkResult(""" 
+            void "Sample test"() {
+                expect:
+                a + b == c
+        
+                where:
+                a | b | c
+                0 | 0 | 0
+                1 | 1 | 2
+                0 | 1 | 1
+                1 | 0 | 1
+                2 | 2 | 4
+                4 | 5 | 9
+            }
+        """)
+    }
+
     void testRemoveNumberCasesWithLotOfCases() {
         given: 'a test with data table '
         myFixture.configureByFile('SampleSpockTestWithLotOfCasesCommented.groovy')

@@ -20,7 +20,7 @@ plugins {
 }
 
 group 'es.spockdatatable.idea'
-version '1.0.3'
+version '1.0.4'
 
 apply plugin: 'groovy'
 
@@ -51,6 +51,6 @@ patchPluginXml {
   sinceBuild = '201'
   untilBuild = '201.*'
   changeNotes """
-      Fix logo and other minor improvements
+      Fix error when uncomment cases that replace first line of file
       """
 }
