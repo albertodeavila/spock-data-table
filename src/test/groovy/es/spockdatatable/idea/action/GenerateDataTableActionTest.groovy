@@ -36,8 +36,8 @@ class GenerateDataTableActionTest extends BasePlatformTestCase {
         then: 'check data table generated is what expected'
         myFixture.checkResult(""" 
             _ | a
-            _ | true
             _ | false
+            _ | true
         """)
     }
 
@@ -53,10 +53,10 @@ class GenerateDataTableActionTest extends BasePlatformTestCase {
         then: 'check data table generated is what expected'
         myFixture.checkResult(""" 
             a | b
-            true | 1
-            true | 2
             false | 1
             false | 2
+            true | 1
+            true | 2
         """)
     }
 
@@ -72,14 +72,14 @@ class GenerateDataTableActionTest extends BasePlatformTestCase {
         then: 'check data table generated is what expected'
         myFixture.checkResult(""" 
             a | b | c
-            true | 1 | [1,2]
-            true | 1 | [3,4]
-            true | 2 | [1,2]
-            true | 2 | [3,4]
             false | 1 | [1,2]
             false | 1 | [3,4]
             false | 2 | [1,2]
             false | 2 | [3,4]
+            true | 1 | [1,2]
+            true | 1 | [3,4]
+            true | 2 | [1,2]
+            true | 2 | [3,4]
         """)
     }
 
@@ -95,14 +95,14 @@ class GenerateDataTableActionTest extends BasePlatformTestCase {
         then: 'check data table generated is what expected'
         myFixture.checkResult(""" 
             a | b | c
-            true | 1 | { -> "foo"}
-            true | 1 | { -> "var"}
-            true | 2 | { -> "foo"}
-            true | 2 | { -> "var"}
             false | 1 | { -> "foo"}
             false | 1 | { -> "var"}
             false | 2 | { -> "foo"}
             false | 2 | { -> "var"}
+            true | 1 | { -> "foo"}
+            true | 1 | { -> "var"}
+            true | 2 | { -> "foo"}
+            true | 2 | { -> "var"}
         """)
     }
 

@@ -51,6 +51,7 @@ patchPluginXml {
   sinceBuild = '201'
   untilBuild = '201.*'
   changeNotes """
-      Fix error when uncomment cases that replace first line of file
+      Fix error when uncomment cases that replace first line of file.
+      Improve data table generation using combinations groovy collection method.
       """
 }

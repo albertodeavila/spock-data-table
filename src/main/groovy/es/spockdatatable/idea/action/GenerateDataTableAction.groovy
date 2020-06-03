@@ -85,9 +85,7 @@ class GenerateDataTableAction extends AnAction {
             String prefix = currentLine.substring(0, currentLine.indexOf(varNames.first()))
             removeCaseDefinitions(document, project, varNames, caretModel, prefix)
 
-            List<String> spockCases = []
-            generateCombinations(varValues, spockCases, 0, '')
-
+            List<String> spockCases = generateCombinations(varValues)
             if(spockCases.size() > 1){
                 writeOtherSpockCases(document, project, caretModel, spockCases, prefix, oneColumn)
             }
@@ -137,19 +135,11 @@ class GenerateDataTableAction extends AnAction {
     /**
      * Generate all posible combinations in the given result
      * @param values values to generate combinations
-     * @param result the list that contains all the combinations
-     * @param depth
-     * @param current
+     * @return a list of string with all value combinations joined with | character
+     *   For example:  1 | true | "myString"
      */
-    void generateCombinations(List<String[]> values, List<String> result, int depth, String current) {
-        if (depth == values.size()) {
-            result << current
-            return
-        }
-
-        values.get(depth).size().times { int index ->
-            generateCombinations(values, result, depth + 1, current ? "${current} | ${values.get(depth)[index]}" : values.get(depth)[index])
-        }
+    List<String> generateCombinations(List<List<String>> values) {
+        values.combinations().collect{it.join(' | ')}.sort()
     }
 
     @Override
