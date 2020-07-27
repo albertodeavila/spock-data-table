@@ -94,7 +94,7 @@ class UncommentSpockCasesAction extends AnAction {
      * Check if the current line contains a comment with the case number
      */
     private boolean lineContainsNumberCase(String line) {
-        line.contains('/*___') && line.contains('_*/')
+        line.contains('/*___') && line.contains('*/')
     }
 
     @Override

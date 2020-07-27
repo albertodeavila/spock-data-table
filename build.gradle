@@ -20,7 +20,7 @@ plugins {
 }
 
 group 'es.spockdatatable.idea'
-version '1.0.4'
+version '1.0.5'
 
 apply plugin: 'groovy'
 
@@ -49,9 +49,9 @@ buildSearchableOptions {
 patchPluginXml {
   version = project.version
   sinceBuild = '201'
-  untilBuild = '201.*'
+  untilBuild = '202.*'
   changeNotes """
-      Fix error when uncomment cases that replace first line of file.
-      Improve data table generation using combinations groovy collection method.
+      Fix error when uncomment cases in tests with more than 999 cases
+      Added test to check that now it works fine
       """
 }
