@@ -49,9 +49,8 @@ buildSearchableOptions {
 patchPluginXml {
   version = project.version
   sinceBuild = '201'
-  untilBuild = '202.*'
+  untilBuild = '203.*'
   changeNotes """
-      Fix error when uncomment cases in tests with more than 999 cases
-      Added test to check that now it works fine
+      2020.2.3 compatibility 
       """
 }
