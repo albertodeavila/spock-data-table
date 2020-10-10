@@ -2,7 +2,7 @@
 This Jetbrains plugin allows you to improve the use of [Spock](http://spockframework.org/) [data table](http://spockframework.org/spock/docs/1.0/data_driven_testing.html).
 
 Spock is a testing framework and one of its features is to create a [data table](http://spockframework.org/spock/docs/1.0/data_driven_testing.html) that looks like: 
-```
+```groovy
 class Math extends Specification {
     def "maximum of two numbers"(int a, int b, int c) {
         expect:
@@ -38,7 +38,7 @@ What can you do with this plugin?
 ### Add a new column
 
 If you have a test such as: 
-``` 
+```groovy
 def "maximum of two numbers"(int a, int b, int c) {
     expect:
     Math.max(a, b) == c
@@ -52,7 +52,7 @@ def "maximum of two numbers"(int a, int b, int c) {
 ```
 
 and you want to add a new column, following the sintax `varName => [val1#val2]`, you can write: 
-``` 
+``` groovy
 def "maximum of two numbers"(int a, int b, int c) {
     expect:
     Math.max(a, b) == c
@@ -65,7 +65,7 @@ def "maximum of two numbers"(int a, int b, int c) {
 }
 ```
 When you select the `d => [2]` and then press **Tools** > **Spock data table** > **Add selected column**, then the table appears as: 
-``` 
+```groovy
 def "maximum of two numbers"(int a, int b, int c) {
     expect:
     Math.max(a, b) == c
@@ -79,7 +79,7 @@ def "maximum of two numbers"(int a, int b, int c) {
 ```
 
 If you want to add more than one value, for example, `d => [2#5]`, it will generate: 
-``` 
+```groovy
 def "maximum of two numbers"(int a, int b, int c) {
     expect:
     Math.max(a, b) == c
@@ -98,7 +98,7 @@ def "maximum of two numbers"(int a, int b, int c) {
 
 ### Remove an existing column
 You can remove a selected column, for example, if we want to remove `b` column from the following example: 
-``` 
+```groovy
 def "maximum of two numbers"(int a, int b, int c) {
     expect:
     Math.max(a, b) == c
@@ -111,7 +111,7 @@ def "maximum of two numbers"(int a, int b, int c) {
 }
 ```
 You just need to select the column name and press **Tools** > **Spock data table** > **Add selected column**, and it will generate: 
-``` 
+```groovy
 def "maximum of two numbers"(int a, int b, int c) {
     expect:
     Math.max(a, b) == c
@@ -131,7 +131,7 @@ Following the *add new column* sintax, if we want to create a entire table, we j
 
 With the cursor on that line, if we press on **Tools** > **Spock data table** > **Generate data table**, it will appear something like: 
 
-```
+```groovy
 fruits          | prices | currency 
 FRUIT.BANANA    | 2.34   | '€'
 FRUIT.BANANA    | 2.34   | '$'
@@ -149,7 +149,7 @@ FRUIT.APPLE     | 4.45   | '$'
 When you want to edit a value from a specific column, you just need to add to your column name something like: `[previousValue=>futureValue]`. 
 For example, if you have the next data table: 
 
-```
+```groovy
 a  | b | c
 0  | 0 | 0
 1  | 1 | 2
@@ -160,7 +160,7 @@ a  | b | c
 ```
 and you want to replace `1` value from the `b` column, you just need to write:
 
-```
+```groovy
 a  | b[1=>7] | c
 0  | 0 | 0
 1  | 1 | 2
@@ -178,7 +178,7 @@ When you have tables with a bunch of options and, sometimes, some cases fail, yo
 With this feature you can see at a quick glance what's the case number.
 Suppose that we have the following test: 
 
-```
+```groovy
 void "My sum"() {
     expect:
     a + b == c
@@ -209,7 +209,7 @@ void "My sum"() {
 ```
 
 When you press on **Tools** > **Spock data table** > **Write # case**, the test will be like:
-```
+```groovy
 void "My sum"() {
     expect:
     a + b == c
