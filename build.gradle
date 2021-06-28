@@ -20,7 +20,7 @@ plugins {
 }
 
 group 'es.spockdatatable.idea'
-version '1.0.6'
+version '1.0.7'
 
 apply plugin: 'groovy'
 
@@ -34,7 +34,7 @@ repositories {
 
 intellij {
   plugins 'java'
-  version = '2020.1'
+  version = '2021.1'
 }
 
 dependencies {
@@ -49,8 +49,8 @@ buildSearchableOptions {
 patchPluginXml {
   version = project.version
   sinceBuild = '201'
-  untilBuild = '203.*'
+  untilBuild = '211.*'
   changeNotes """
-      2020.2.3 compatibility 
+      2021.1 compatibility
       """
 }
