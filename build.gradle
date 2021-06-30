@@ -20,7 +20,7 @@ plugins {
 }
 
 group 'es.spockdatatable.idea'
-version '1.0.7'
+version '1.0.8'
 
 apply plugin: 'groovy'
 
@@ -51,6 +51,6 @@ patchPluginXml {
   sinceBuild = '201'
   untilBuild = '211.*'
   changeNotes """
-      2021.1 compatibility
+      Remove deprecated method
       """
 }
